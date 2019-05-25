@@ -6,7 +6,7 @@ export default class MapPage extends React.Component {
     var mymap = window.L.map('mapid').setView([59.558508, 30.121323], 15)
     var myIcon = window.L.icon({
       iconUrl: 'https://wmpics.pics/di-L55Z.png',
-      iconSize: [34, 34]
+      iconSize: [28, 28]
     })
     window.L.Marker.prototype.options.icon = myIcon
     window.L.tileLayer
@@ -31,6 +31,15 @@ export default class MapPage extends React.Component {
           }
         ]
       },
+      router: window.L.Routing.graphHopper(
+        '1ffd06a7-66cf-4e7d-ac84-1fb8b5049b27',
+        {
+          urlParameters: {
+            vehicle: 'foot'
+          }
+        }
+      ),
+      showAlternatives: true,
       waypoints: [
         window.L.latLng(59.570786, 30.122674),
         window.L.latLng(59.56421, 30.11473),
