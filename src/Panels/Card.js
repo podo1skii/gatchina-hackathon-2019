@@ -15,13 +15,17 @@ class Card extends Component {
             status: "down",
             places: [{type:"museum", name: "ghbdrrgreg bbffbfb cbffbfbc"}],
             moveButton: "move-button-new",
-            moveTinder: "tinder-card-new"
+            moveTinder: "tinder-card-new",
+            xcoords: '',
+            left: 50,
+            remove: false
          }
-         this.onChangeStatus = this.onChangeStatus.bind(this)
+         this.onChangeStatus = this.onChangeStatus.bind(this);
+         this.onTinderMove = this.onTinderMove.bind(this)
+         this.onTinderMoveEnd = this.onTinderMoveEnd.bind(this)
     }
 
     onChangeStatus(){
-        console.log(this);
         
         if (this.state.status === "down"){
             this.setState({status: "up", moveButton: "move-button-down", moveTinder:"tinder-card-up"})
@@ -30,10 +34,114 @@ class Card extends Component {
         }
     }
 
+    onTinderMove(x,y){
+        let a = this.state.left;
+        // a = a - 1;
+        // this.setState({left: a})
+        console.log(this.state.left);
+       
+        
+        if (this.state.remove === true) {console.log('remove return');return;}
+
+        if (x < 60) {
+                let interval = setInterval(
+                    function() {
+                        let a = this.state.left;
+                        a = a - 1;
+                        this.setState({left: a, xcoords: x});  
+                        console.log(this.state);
+                                              
+                        setTimeout(clearInterval(interval),1000)
+                            
+                    }
+                    .bind(this),
+                    20
+                );
+                this.props.onRemoveCard();
+        }else if(x > (window.innerWidth - 60)){
+            let interval = setInterval(
+                function() {
+                    let a = this.state.left;
+                    a = a + 1;
+                    this.setState({left: a, xcoords: x});
+                    console.log(this.state.xcoords);
+                    if (this.state.xcoords > 120) {
+                        clearInterval(interval)
+                    }
+                }
+                .bind(this),
+                20
+            );
+            this.props.onRemoveCard();
+           
+        }
+
+        if (this.state.xcoords === ''){
+            this.setState({ xcoords: x});
+        }else if ( this.state.xcoords > x){
+            a = a - (Math.abs(this.state.xcoords - x)/window.innerWidth*100);
+            this.setState({left: a, xcoords: x})
+        }else if (this.state.xcoords < x){
+            //0 - 60 -> 
+            a = a + (Math.abs(this.state.xcoords - x)/window.innerWidth*100);
+            this.setState({left: a, xcoords: x})
+        }
+    }
+
+    onTinderMoveEnd(x,y){
+        if (this.state.status === "down") {
+            return ;
+        }
+        if (x > 60 && x < (window.innerWidth - 60)){
+            if (x< window.innerWidth/2){
+                let interval = setInterval(
+                    function() {
+                        if ((this.state.left - 50)<=-1) {
+                            let a = this.state.left;
+                            a = a + 1;
+                            this.setState({left: a, xcoords: x});
+                        }else{
+                            let a = this.state.left;
+                            a = a + Math.abs(this.state.left - 50);
+                            this.setState({left: a, xcoords: x});
+                        }
+                        if (Math.abs(this.state.left - 50)<=0.005){
+                            clearInterval(interval);
+                        }
+                    }
+                    .bind(this),
+                    20
+                );
+                
+            }else{
+                let interval = setInterval(
+                    function() {
+                        if ((this.state.left - 50)>=1) {
+                            let a = this.state.left;
+                            a = a - 1;
+                            this.setState({left: a, xcoords: x});
+                        }else{
+                            let a = this.state.left;
+                            a = a - Math.abs(this.state.left - 50);
+                            this.setState({left: a, xcoords: x});
+                        }
+                        if (Math.abs(this.state.left - 50)<=0.005){
+                            clearInterval(interval);
+                        }
+                    }
+                    .bind(this),
+                    20
+                );
+            }
+        }
+    }
+
     render() { 
+        console.log(this.props);
+        
         return ( 
             <div>
-                <div onTouchMove={(e)=>console.log(e.value)} onTouchMove={(e)=>console.log(e.targetTouches, e.changedTouches, e.touches)} onClick={()=>{this.onChangeStatus()}} className={"tinder-card "+this.state.moveTinder}>
+                <div style={{left: this.state.left + '%'}} onTouchEnd={(e)=>this.onTinderMoveEnd(e.changedTouches[0].clientX)} onTouchMove={(e)=>this.onTinderMove(e.targetTouches[0].clientX)} onClick={()=>{this.onChangeStatus()}} className={"tinder-card "+this.state.moveTinder}>
                     <div className="tinder-card-header">
                         Информация
                     </div>
