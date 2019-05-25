@@ -1,5 +1,8 @@
-
+.leaflet-interactive {
+  stroke: pink;
+  stroke-opacity: 1;
+}
 
 .leaflet-routing-container {
-    display: none;
-    }
+  display: none;
+}
