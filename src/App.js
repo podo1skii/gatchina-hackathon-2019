@@ -5,7 +5,7 @@ import StartPage from './Panels/StartPage';
 import FoodPage from './Panels/FoodPage';
 import DurationPage from './Panels/DurationPage';
 import MapPage from './Panels/MapPage';
-import Card from './Panels/Card';
+import TinderCard from './Panels/Tinder';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route path='/meals/:params' component={FoodPage}/>
           <Route path='/duration' component={DurationPage}/>
           <Route path='/map' component={MapPage}/>
-          <Route path='/tinder' component={Card}/>
+          <Route path='/tinder' component={TinderCard}/>
         </Switch>
     </HashRouter>
   );

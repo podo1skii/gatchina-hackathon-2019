@@ -28,6 +28,17 @@
     }
 }
 
+@keyframes move-tinder-new{
+    0%{
+        margin-top: 100vh;
+    }
+    50%{
+        margin-top: 75vh;
+    }
+    100%{
+        margin-top: 81vh;
+    }
+}
 
 
 .tinder-card{
@@ -40,8 +51,12 @@
     transform: translateX(-50%);
     top: 10vh;
     border-radius: 30px;
+    
 }
 
+.tinder-card-new{
+    animation: move-tinder-new 0.9s forwards;
+}
 .tinder-card-down{
     animation: move-tinder-down 2s forwards;
 }

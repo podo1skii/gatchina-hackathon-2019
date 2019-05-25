@@ -13,27 +13,31 @@ class Card extends Component {
         super(props);
         this.state = { 
             status: "down",
-            places: [{type:"museum", name: "ghbdrrgreg bbffbfb cbffbfbc"}]
+            places: [{type:"museum", name: "ghbdrrgreg bbffbfb cbffbfbc"}],
+            moveButton: "move-button-new",
+            moveTinder: "tinder-card-new"
          }
          this.onChangeStatus = this.onChangeStatus.bind(this)
     }
 
     onChangeStatus(){
+        console.log(this);
+        
         if (this.state.status === "down"){
-            this.setState({status: "up"})
+            this.setState({status: "up", moveButton: "move-button-down", moveTinder:"tinder-card-up"})
         }else{
-            this.setState({status:"down"})
+            this.setState({status:"down", moveButton: "move-button-up", moveTinder:"tinder-card-down"})
         }
     }
 
     render() { 
         return ( 
             <div>
-                <div onClick={()=>{this.onChangeStatus()}} className={this.state.status === "down"? "tinder-card tinder-card-down": "tinder-card tinder-card-up"}>
+                <div onTouchMove={(e)=>console.log(e.value)} onTouchMove={(e)=>console.log(e.targetTouches, e.changedTouches, e.touches)} onClick={()=>{this.onChangeStatus()}} className={"tinder-card "+this.state.moveTinder}>
                     <div className="tinder-card-header">
                         Информация
                     </div>
-                    <img className={this.state.status === "down" ? "move-button move-button-up" : "move-button move-button-down"} src={arrowup}/>
+                    <img className={"move-button "+this.state.moveButton} src={arrowup}/>
                     <div className="line"></div>
                     <div className="scrolling">
                         {this.state.places.map((item)=>
