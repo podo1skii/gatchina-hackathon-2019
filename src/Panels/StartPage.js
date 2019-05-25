@@ -6,7 +6,7 @@ import eating from '../Images/restaurant.svg';
 import bike from '../Images/bike.svg';
 import car from '../Images/sports-car.svg';
 
-import getNextRoute from '../API.js';
+import {getNextRoute} from '../API.js';
 
 class StartPage extends React.Component {
     constructor(props) {

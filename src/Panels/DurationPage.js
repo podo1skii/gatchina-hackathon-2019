@@ -32,7 +32,7 @@ class DurationPage extends React.Component {
                     {this.state.value}<br/><span>мин</span>
                 </div>
                 <div className="button accept-button">
-                    <Link className="link" to={{ pathname: '/map' }}>Выбрать</Link>
+                    <Link className="link" to={{ pathname: '/tinder' }}>Выбрать</Link>
                 </div>
             </div>
          );

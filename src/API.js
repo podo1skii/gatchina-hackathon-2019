@@ -1,4 +1,8 @@
-export default function getNextRoute(array){
+import museum from './Images/bank-2.svg';
+import monument from './Images/greek-column.svg';
+
+
+export function getNextRoute(array){
     let path = '/';
     let stackParams = [];
     if (array[1] === 1) {
@@ -24,4 +28,18 @@ export default function getNextRoute(array){
     }
     path = path + stackParams.join('&');
     return path;
+}
+
+
+export function getTypeOfPlace(type){
+    switch (type) {
+        case "museum":
+            return museum;
+        case "monument":
+            return monument;
+    
+        default:
+            break;
+    }
+
 }
