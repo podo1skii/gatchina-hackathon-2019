@@ -1,5 +1,6 @@
 import React from 'react'
 import './MapPage.css'
+import TinderCard from './Tinder';
 
 export default class MapPage extends React.Component {
   componentDidMount() {
@@ -63,9 +64,10 @@ export default class MapPage extends React.Component {
   render() {
     return (
       <div>
-        <div id="mapid" style={{ height: '1080px' }}>
+        <div id="mapid" style={{ height: '1080px', zIndex:0 }}>
           LeafletMap
         </div>
+        <TinderCard/>
       </div>
     )
   }
