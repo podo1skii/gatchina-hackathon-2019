@@ -86,7 +86,7 @@
     position: absolute;
     margin-top: 7%;
     text-align: left;
-    margin-left: 10%;
+    margin-left: 7%;
     font-size: 20px;
     font-weight: bold;
     padding: 0%;
@@ -95,7 +95,7 @@
 
 .place-info{
     display: grid;
-    margin-top: 8%;
+    margin-top: 4%;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 50px 1fr;
     margin-left: 5%;
@@ -119,6 +119,7 @@
     padding-left: 8%;
     font-size: 12px;
     padding-right: 8%;
+    margin-top: -7%;
 }
 
 .line{
@@ -130,15 +131,47 @@
 .scrolling{
     position: fixed;
     overflow: scroll;
-    height: 67vh;
+    height: 62vh;
 }
 
-.monument{
+.Monument{
     background-color: rgb(100, 174, 235);
 }
 
-.museum{
+.Museum{
     background: orange;
+}
+
+.Park{
+    background: rgb(25, 138, 25);
+}
+
+.Food{
+    background: rgb(206, 109, 219);
+}
+
+.buy-button{
+    background: rgb(91, 91, 223);
+    height: 6vh;
+    width: 65vw;
+    margin-top: 64vh;
+    margin-left: 7vw;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 37px;
+    color: aliceblue;
+}
+
+.separator{
+    height: 1px;
+    width: 50vw;
+    background-color: rgb(165, 165, 165);
+    margin-left: 17vw;
+    margin-top: 4%;
+}
+
+.big-desc{
+    margin-top: 3%;
 }
 
 

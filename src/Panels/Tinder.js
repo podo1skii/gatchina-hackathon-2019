@@ -12,14 +12,14 @@ class TinderCard extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            routes: [1,2,3,4]
+            routes: this.props.routes
          }
          this.onRemoveCard = this.onRemoveCard.bind(this)
     }
 
 
     componentWillMount(){
-        serverResponseOld(getInfoPlace(1)).then((e)=>console.log(e))
+    
     }
 
     onRemoveCard(){
@@ -30,10 +30,12 @@ class TinderCard extends React.Component {
     }
 
     render() { 
+        console.log(this.state.routes);
+        
         console.log('prerender');
         return (
             <>
-            {this.state.routes.length === 4 && <Card key={0} id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}
+            {this.state.routes.length === 4 && <Card key={0} id={this.state.routes[0]} onRemoveCard={this.onRemoveCard}  />}
             {this.state.routes.length === 3 && <Card key={1} id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}
             {this.state.routes.length === 2 && <Card key={2} id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}
             {this.state.routes.length === 1 && <Card key={3} id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}

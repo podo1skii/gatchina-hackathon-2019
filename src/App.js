@@ -14,7 +14,7 @@ function App() {
           <Route exact path='/' component={StartPage}/>
           <Route path='/meals/:params' component={FoodPage}/>
           <Route path='/duration/:params' component={DurationPage}/>
-          <Route path='/map' component={MapPage}/>
+          <Route path='/map/:params' component={MapPage}/>
           <Route path='/tinder' component={TinderCard}/>
         </Switch>
     </HashRouter>

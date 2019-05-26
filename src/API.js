@@ -1,5 +1,10 @@
 import museum from './Images/bank-2.svg';
 import monument from './Images/greek-column.svg';
+import park from './Images/tree.svg';
+import food from './Images/burger.svg';
+
+
+
 
 
 export function getNextRoute1(array){
@@ -34,21 +39,25 @@ export function getNextRoute(array) {
     let path = '/';
     if (array[1] === 1) {
         path = path + 'meals/';
+        path = path + array.join('');
     }else{
         path = path + 'duration/';
+        path = path + array.join('') + '&0000';
     }
-    path = path + array.join('');
     return path;
 }
 
 
 export function getTypeOfPlace(type){
     switch (type) {
-        case "museum":
+        case "Museum":
             return museum;
-        case "monument":
+        case "Monument":
             return monument;
-    
+        case 'Park':
+            return park;
+        case 'Food':
+            return food;
         default:
             break;
     }
@@ -56,14 +65,14 @@ export function getTypeOfPlace(type){
 }
 
 export function getInfoPlace(id){
-    return 'http://157.230.116.199:8008/point='+ id;
+    return 'http://157.230.116.199:8000/point='+ id;
 }
 
 export function getRoute(arrayThemes, arrayFood, duration){
     arrayThemes = arrayThemes.join('');
     arrayFood = arrayFood('');
     duration = duration + '';
-    return 'http://157.230.116.199:8008/params='+ arrayThemes + '&'+ arrayFood + '&'+ duration;
+    return 'http://157.230.116.199:8000/params='+ arrayThemes + '&'+ arrayFood + '&'+ duration;
 }
 
 let headers = new Headers({
@@ -71,8 +80,9 @@ let headers = new Headers({
 })
 
 let options = {
-    'Authorization': `Bearer 6ab4f96f0c8479258b57a00d86b3a7b1220d8041c9dc6c391c41cfa8b0239a14`,
-    'Content-Type': 'application/json',
+    method: 'GET',
+    mode: 'no-cors',
+    // 'Authorization': `Bearer 6ab4f96f0c8479258b57a00d86b3a7b1220d8041c9dc6c391c41cfa8b0239a14`,
     headers:{
         headers
     }

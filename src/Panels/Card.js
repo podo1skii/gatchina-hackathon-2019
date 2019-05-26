@@ -6,6 +6,7 @@ import arrowup from "../Images/up-arrow.svg";
 import museum from '../Images/bank.svg';
 import monument from '../Images/greek-column.svg';
 import { getTypeOfPlace } from '../API';
+import {points} from './data';
 
 
 class Card extends Component {
@@ -13,7 +14,7 @@ class Card extends Component {
         super(props);
         this.state = { 
             status: "down",
-            places: [{type:"museum", name: "ghbdrrgreg bbffbfb cbffbfbc"}],
+            places: [],
             moveButton: "move-button-new",
             moveTinder: "tinder-card-new",
             xcoords: '',
@@ -26,7 +27,6 @@ class Card extends Component {
     }
 
     onChangeStatus(){
-        
         if (this.state.status === "down"){
             this.setState({status: "up", moveButton: "move-button-down", moveTinder:"tinder-card-up"})
         }else{
@@ -136,6 +136,14 @@ class Card extends Component {
         }
     }
 
+    componentWillMount(){
+        for (let i = 0; i < this.props.id.length; i++) {
+            this.state.places.push(points[this.props.id[i]])
+        }
+        console.log(this.state.places);
+        
+    }
+
     render() { 
         console.log(this.props);
         console.log(window.times);
@@ -149,18 +157,20 @@ class Card extends Component {
                     <img className={"move-button "+this.state.moveButton} src={arrowup}/>
                     <div className="line"></div>
                     <div className="scrolling">
-                        {this.state.places.map((item)=>
-                            <div key={1} className="place-info">
+                        {this.state.places.map((item,i)=>
+                            <>
+                            <div key={i} className="place-info">
                                 <img className={"typeof-place "+item.type} src={getTypeOfPlace(item.type)}></img>
-                                <div className="nameof-place">{item.name}</div>
+                                <div className="nameof-place">{item.title}</div>
                                 <div></div>
-                                <div className="desc-place">{item.description}</div>
-                            </div> 
-                        ) }
+                                <div className={item.id !== 11? "desc-place": "desc-place big-desc"}>{item.description}</div>
+                            </div>
+                            <div className="separator"></div> 
+                            </>
+                        )}
                     </div>
-                    
+                    <div className="buy-button">Купить билеты</div>
                 </div>
-                
             </div>
             
          );

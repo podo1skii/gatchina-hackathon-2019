@@ -1,50 +1,146 @@
-export default [
-    {
-      pics: [
-        "https://images.unsplash.com/photo-1520024146169-3240400354ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-      ],
-      name: "Heather",
-      age: 32,
-      distance: "4 miles away",
-      text:
-        "My nickname is Gilette because I'm the best a man can get. Also I will cut you."
-    },
-    {
-      pics: [
-        "https://images.unsplash.com/photo-1522263842439-347f062b8475?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      ],
-      name: "Chloe",
-      age: 18,
-      distance: "1 mile away",
-      text: "The C and the L are silent."
-    },
-    {
-      pics: [
-        "https://images.unsplash.com/photo-1539758462369-43adaa19bc1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-      ],
-      name: "Helen",
-      age: 19,
-      distance: "3 miles away",
-      text: "Aspiring MILF"
-    },
-    {
-      pics: [
-        "https://images.unsplash.com/photo-1514924801778-1db0aba75e9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      ],
-      name: "Savannah",
-      age: 29,
-      distance: "3 miles away",
-      text: "A little known fact is that I cover about 40% of Africa."
-    },
-    {
-      pics: [
-        "https://images.unsplash.com/photo-1456885284447-7dd4bb8720bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-        "https://images.unsplash.com/photo-1532635270-c09dac425ca9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-      ],
-      name: "Jane",
-      age: 22,
-      distance: "2 miles away",
-      text:
-        "On the first date I will carve our initials in a tree. It's the most romantic way to let you know I have a knife."
-    }
-  ];
+export let points = [{
+  "id": 1,
+  "title": "Музей истории города Гатчина",
+  "description": "Музей",
+  "coordinates": [59.570786, 30.122674],
+  "type":"Museum"
+},{
+  "id":2,
+  "title":"Кирха",
+  "description":"Лютеранское обрядное сооружение, музей",
+  "coordinates":[59.572565, 30.126017],
+  "type":"Museum"
+},{
+  "id":3,
+  "title":"Колодец Иордань",
+  "description":"Чистейший родник, заключенный в гранитную оправу",
+  "coordinates":[59.564210, 30.114730],
+  "type":"Monument"
+},{
+  "id":4,
+  "title":"Адмиралтейство",
+  "description":"Парковое сооружение в Дворцовом парке города Гатчина",
+  "coordinates": [59.563330, 30.116021],
+  "type":"Monument"
+},{
+  "id":5,
+  "title":"Приоратский дворец",
+  "description":"Дворец 1799 года",
+  "coordinates":[59.558508, 30.121323],
+  "type":"Museum"
+},{
+  "id":6,
+  "title":"Сильвийские ворота",
+  "description":"Главный вход в парк Сильвия",
+  "coordinates":[59.567584, 30.095024],
+  "type":"Monument"
+},{
+  "id":7,
+  "title":"Памятник Павлу I",
+  "description":"Скульптура Павла I, установленная в 1851 году",
+  "coordinates":[59.563022, 30.106800],
+  "type":"Monument"
+},{
+  "id":8,
+  "title":"Государственный музей-заповедник Гатчина",
+  "description":"Огромный роскошный дворец с садами, в котором хранятся многочисленные коллекции предметов искусства",
+  "coordinates":[59.563489, 30.107388],
+  "type":"Museum"
+},{
+  "id":9,
+  "title":"Собственный сад",
+  "description":"Прекрасное место для прогулок",
+  "coordinates":[59.563259, 30.109908],
+  "type":"Park"
+},{
+  "id":10,
+  "title":"Собор Святого Апостола Павла",
+  "description":"Религиозная организация",
+  "coordinates":[59.565129, 30.129797],
+  "type":"Monument"
+},{
+  "id":11,
+  "title":"Гатчинский музей-усадьба художника П.Е.Щербакова",
+  "description":"Филиал ленинградского областного государственного учреждения культуры 'Музейное агенство'",
+  "coordinates":[59.556992, 30.133310],
+  "type":"Museum"
+},{
+  "id":12,
+  "title":"Приоратский парк",
+  "description":"Пейзажный парк в городе Гатчине",
+  "coordinates":[59.554329, 30.120397],
+  "type":"Park"
+},{
+  "id":13,
+  "title":"Березовые ворота",
+  "description":"Памятник архитектуры, расположенный на восточной границе дворцового парка в городе Гатчина",
+  "coordinates":[59.559870, 30.113842],
+  "type":"Monument"
+},{
+  "id":14,
+  "title":"Павильон Венеры",
+  "description":"Павильон в дворцовом парке Гатчины",
+  "coordinates":[59.568506, 30.109240],
+  "type":"Museum"
+},{
+  "id":15,
+  "title":"Дубок",
+  "description":"Ресторан",
+  "coordinates":[59.566724, 30.118565],
+  "type":"Food"
+},{
+  "id":16,
+  "title":"Росто",
+  "description":"Кафе",
+  "coordinates":[59.563079, 30.104341],
+  "type":"Food"
+},{
+  "id":17,
+  "title":"Calcio",
+  "description":"Кафе",
+  "coordinates":[59.566102, 30.126308],
+  "type":"Food"
+},{
+  "id":18,
+  "title":"СушиWay",
+  "description":"Суши",
+  "coordinates":[59.571453, 30.123687],
+  "type":"Food"
+}]
+
+
+export let routes = [
+  { "id":1,
+    "theme":0,
+    "duration": 1,
+    "points":[1,3,4,5]
+  },{ "id":2,
+    "theme":1,
+    "duration": 1,
+    "points":[1,15,3,4,5]
+  },{ "id":3,
+    "theme":0,
+    "duration": 1,
+    "points":[6,7,8,9,4]
+  },{ "id":4,
+    "theme":1,
+    "duration": 1,
+    "points":[6,16,7,8,9,4]
+  },{ "id":5,
+    "theme":0,
+    "duration": 1,
+    "points":[2,1,10,11,12]
+  },{ "id":6,
+    "theme":1,
+    "duration": 1,
+    "points":[2,1,17,10,11,12]
+  },{ "id":7,
+    "theme":0,
+    "duration": 1,
+    "points":[2,1,13,14]
+  },{ "id":8,
+    "theme":1,
+    "duration": 1,
+    "points":[2,18,1,13,14]
+  }
+]
