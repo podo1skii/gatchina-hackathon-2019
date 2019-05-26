@@ -26,11 +26,11 @@ class TinderCard extends React.Component {
         let routes = this.state.routes;
         routes.shift();
         this.setState({routes: routes})
-        this.props.onRemoveRoute();
+        this.props.onRemoveRoute(routes);
     }
 
     render() { 
-        console.log(this.state.routes);
+        console.log(this.props.routes);
         
         console.log('prerender');
         return (

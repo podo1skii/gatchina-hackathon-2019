@@ -5,25 +5,38 @@ import {routes, points} from './data.js';
 
 
 export default class MapPage extends React.Component {
+    
     constructor(props) {
         super(props);
         this.state = { 
             routes: [],
-            points: []
+            points: [],
+            mymap: ''
          }
          this.onRemoveRoute = this.onRemoveRoute.bind(this)
     }
 
-    onRemoveRoute(){
+    onRemoveRoute(routes){
+        let tPoints = [];
+        this.state.mymap.remove();
+        this.setState({mymap: window.L.map('mapid').setView([59.559386, 30.114359], 14.48)})
+            
         console.log('onRemoveRoute');        
-        console.log(this.state);
+    
+        this.setState({routes:routes,points:[]})
+            
+        if(this.state.routes === undefined){for (let i = 0; i < this.state.routes[0].length; i++) {  //[1,3,4,5]
+            tPoints.push(points[this.state.routes[0][i]-1].coordinates)
+        }}
+        console.log(tPoints);
         
+        this.setState({points: tPoints});
+    
     }
 
     
     componentDidMount() {
-        setTimeout(function() {
-            let tRoutes = this.state.routes;
+        let tRoutes = this.state.routes;
         let tPoints = [];
         let params = this.props.match.params.params.split('&');
         if (params[0].split('')[1] == '1'){
@@ -41,11 +54,7 @@ export default class MapPage extends React.Component {
         }
         this.setState({routes: tRoutes});
         console.log(this.state.routes);
-
         for (let i = 0; i < this.state.routes[0].length; i++) {  //[1,3,4,5]
-            console.log(this.state.routes[0]);
-            console.log(this.state.routes[0][i]);
-            console.log(points[this.state.routes[0][i]-1]);
             tPoints.push(points[this.state.routes[0][i]-1].coordinates)
         }
         console.log(tPoints);
@@ -53,13 +62,20 @@ export default class MapPage extends React.Component {
 
         this.setState({points: tPoints});
         console.log(this.state.points);
+    }
+    render() {
+        console.log(this.state);
+        setTimeout(function() {
+        
+
+        
 
 
         let waypoints = [];
-        for (let i = 0; i < tPoints.length; i++) {
-            waypoints.push(window.L.latLng(tPoints[i][0],tPoints[i][1]));
+        for (let i = 0; i < this.state.points.length; i++) {
+            waypoints.push(window.L.latLng(this.state.points[i][0],this.state.points[i][1]));
         }
-        var mymap = window.L.map('mapid').setView([59.559386, 30.114359], 14.48)
+        if(this.state.mymap === ''){this.setState({mymap: window.L.map('mapid').setView([59.559386, 30.114359], 14.48)})}
         var myIcon = window.L.icon({
             iconUrl: 'https://wmpics.pics/di-L55Z.png',
             iconSize: [28, 28]
@@ -70,8 +86,9 @@ export default class MapPage extends React.Component {
                 app_id: 'zAb9wgNk7o2spmyo5tHD',
                 app_code: 'jdH7-AVXp8NwySqSpB-5Wg'
             })
-            .addTo(mymap)
-
+            .addTo(this.state.mymap)
+    
+        
         var routeControl = window.L.Routing.control({
             lineOptions: {
                 styles: [{
@@ -96,7 +113,7 @@ export default class MapPage extends React.Component {
             ),
             showAlternatives: true,
             waypoints: waypoints
-        }).addTo(mymap);
+        }).addTo(this.state.mymap);
         routeControl.on('routesfound', function (e) {
             var routes = e.routes;
             var summary = routes[0].summary;
@@ -104,10 +121,6 @@ export default class MapPage extends React.Component {
             window.distance = summary.totalDistance / 1000;        
         });
         }.bind(this),500)
-        
-    }
-    render() {
-        console.log(this.state);
         
         return ( <div>
             <div id = "mapid" style = {{height: '1080px',zIndex: 0}}>
