@@ -68,11 +68,17 @@ export function getInfoPlace(id){
     return 'http://157.230.116.199:8000/point='+ id;
 }
 
-export function getRoute(arrayThemes, arrayFood, duration){
+export function getRoute(arrayThemes, arrayFood, duration, ){
     arrayThemes = arrayThemes.join('');
     arrayFood = arrayFood('');
     duration = duration + '';
     return 'http://157.230.116.199:8000/params='+ arrayThemes + '&'+ arrayFood + '&'+ duration;
+}
+
+export function getRoutes(param){
+    console.log(param.split('')[1]);
+    
+    return 'http://157.230.116.199:8000/params='+ param.split('')[1];
 }
 
 let headers = new Headers({
@@ -91,7 +97,7 @@ let options = {
 
 
 export function serverResponse(urlRequest) {
-    return fetch(urlRequest, options).then(function(response) {
+    return fetch(urlRequest).then(function(response) {
         return response.json();
     })
 }

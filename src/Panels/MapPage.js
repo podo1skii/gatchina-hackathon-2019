@@ -2,6 +2,7 @@ import React from 'react'
 import './MapPage.css'
 import TinderCard from './Tinder';
 import {routes, points} from './data.js'; 
+import { serverResponse, getInfoPlace, getRoutes } from '../API';
 
 
 export default class MapPage extends React.Component {
@@ -36,6 +37,7 @@ export default class MapPage extends React.Component {
 
     
     componentDidMount() {
+        serverResponse(getRoutes(this.props.match.params.params)).then((e)=>console.log(e));
         let tRoutes = this.state.routes;
         let tPoints = [];
         let params = this.props.match.params.params.split('&');
@@ -67,10 +69,6 @@ export default class MapPage extends React.Component {
         console.log(this.state);
         setTimeout(function() {
         
-
-        
-
-
         let waypoints = [];
         for (let i = 0; i < this.state.points.length; i++) {
             waypoints.push(window.L.latLng(this.state.points[i][0],this.state.points[i][1]));
