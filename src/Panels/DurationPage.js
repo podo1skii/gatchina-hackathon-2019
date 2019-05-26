@@ -21,15 +21,15 @@ class DurationPage extends React.Component {
         return ( 
             <div className="start-page start-page_change-color">
                 <div className="header-text text text_bold">
-                    Сколько времени планируете потратить?
+                    Ваш бюджет
                 </div>
                 <div className="header-text text small-text">
-                Мы постараемся учесть всё.
+                Сколько планируете потратить?
                 </div>
-                <input className="slider" type="range" min="0" max="120" step="1" defaultValue="120" onChange={(e)=>{this.setState({value: 120 - e.target.value});
+                <input className="slider" type="range" min="0" max="1500" step="100" defaultValue="1500" onChange={(e)=>{this.setState({value: 1500 - e.target.value});
                 }}/>
                 <div className="slider-value" >
-                    {this.state.value}<br/><span>мин</span>
+                    {this.state.value}<br/><span>рублей</span>
                 </div>
                 <div className="button accept-button">
                     <Link className="link" to={{ pathname: '/map/' + this.props.match.params.params + "&"+ this.state.value}}>Выбрать</Link>

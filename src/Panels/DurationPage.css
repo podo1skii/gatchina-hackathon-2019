@@ -6,7 +6,7 @@
     position: absolute;
     width: 30vh;
     top: 50vh;
-    left: 25vw;
+    left: 8vw;
     height: 25px;
     border-radius: 10px;
     background: linear-gradient(90deg, #C7BFF7 0%, #B7E8B3 100%);
@@ -24,9 +24,9 @@
 .slider-value{
     line-height: 5vh;
     position: absolute;
-    left: 45vw;
-    top: 44vh;
-    font-size: 15vh;
+    left: 47vw;
+    top: 48vh;
+    font-size: 9vh;
     font-weight: bold;
 }
 

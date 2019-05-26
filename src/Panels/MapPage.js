@@ -25,7 +25,7 @@ export default class MapPage extends React.Component {
     
         this.setState({routes:routes,points:[]})
             
-        if(this.state.routes === undefined){for (let i = 0; i < this.state.routes[0].length; i++) {  //[1,3,4,5]
+        if(this.state.routes[0] !== undefined){for (let i = 0; i < this.state.routes[0].length; i++) {  //[1,3,4,5]
             tPoints.push(points[this.state.routes[0][i]-1].coordinates)
         }}
         console.log(tPoints);
@@ -77,7 +77,7 @@ export default class MapPage extends React.Component {
         }
         if(this.state.mymap === ''){this.setState({mymap: window.L.map('mapid').setView([59.559386, 30.114359], 14.48)})}
         var myIcon = window.L.icon({
-            iconUrl: 'https://wmpics.pics/di-L55Z.png',
+            iconUrl: 'https://vk.com/doc314864347_503745968?hash=fcc885f6a984ec8ead&dl=7ef810dc6fbf5874de',
             iconSize: [28, 28]
         })
         window.L.Marker.prototype.options.icon = myIcon
@@ -120,6 +120,9 @@ export default class MapPage extends React.Component {
             window.times = Math.round(summary.totalTime % 3600) / 60;
             window.distance = summary.totalDistance / 1000;        
         });
+       if (this.state.routes.length === 4){window.L.marker([59.570786, 30.122674])
+        .addTo(this.state.mymap)
+        .bindPopup("Музей истории города Гатчина");}
         }.bind(this),500)
         
         return ( <div>

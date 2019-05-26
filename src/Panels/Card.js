@@ -138,7 +138,9 @@ class Card extends Component {
 
     componentWillMount(){
         for (let i = 0; i < this.props.id.length; i++) {
-            this.state.places.push(points[this.props.id[i]])
+            console.log(points[this.props.id[i] - 1]);
+            
+            this.state.places.push(points[this.props.id[i]- 1])
         }
         console.log(this.state.places);
         
@@ -169,7 +171,7 @@ class Card extends Component {
                             </>
                         )}
                     </div>
-                    <div className="buy-button">Купить билеты</div>
+                    <div className="buy-button" onClick={()=>{}}>Купить билеты</div>
                 </div>
             </div>
             
