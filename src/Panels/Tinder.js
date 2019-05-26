@@ -2,6 +2,7 @@ import React from 'react';
 
 import Card from './Card';
 import { isTemplateElement } from '@babel/types';
+import { serverResponse, serverResponseOld, getInfoPlace } from '../API';
 
 
 
@@ -16,25 +17,26 @@ class TinderCard extends React.Component {
          this.onRemoveCard = this.onRemoveCard.bind(this)
     }
 
+
+    componentWillMount(){
+        serverResponseOld(getInfoPlace(1)).then((e)=>console.log(e))
+    }
+
     onRemoveCard(){
         let routes = this.state.routes;
         routes.shift();
         this.setState({routes: routes})
-        console.log();
-        
-        
+        this.props.onRemoveRoute();
     }
 
     render() { 
         console.log('prerender');
-        console.log(this.state.routes);
-        
-        return ( 
+        return (
             <>
-            {this.state.routes.length === 4 && <Card id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}
-            {this.state.routes.length === 3 && <Card id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}
-            {this.state.routes.length === 2 && <Card id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}
-            {this.state.routes.length === 1 && <Card id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}
+            {this.state.routes.length === 4 && <Card key={0} id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}
+            {this.state.routes.length === 3 && <Card key={1} id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}
+            {this.state.routes.length === 2 && <Card key={2} id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}
+            {this.state.routes.length === 1 && <Card key={3} id={this.state.routes[0]} onRemoveCard={this.onRemoveCard} />}
             </>
         );
     }

@@ -27,15 +27,14 @@ class FoodPage extends React.Component {
     }
 
     componentWillMount(){
-        console.log(this.props.match.params);
+        
     }
 
     render() { 
+        console.log(this.props.match.params.params);
         return ( 
             <div className="start-page start-page_change-color">
-                <div style={{position: 'absolute'}}>
-                    привет
-                </div>
+            
                 <div className="header-text text text_bold">
                     Выберите ваши предпочтения
                 </div>
@@ -49,7 +48,7 @@ class FoodPage extends React.Component {
                     <div onClick={()=>{this.onChoose(3)}} className={this.state.choose[3] === 1? "square-item item_color_light-red item_choose_true": "square-item item_color_light-red item_choose_false"}><img className={this.state.choose[3] === 1? "item-icon item_choose_true": "item-icon item_choose_false"}  src={burger}/></div>
                 </div>
                 <div className={this.state.choose.indexOf(1) !== -1 ? "button accept-button accept-button-up" : "button accept-button accept-button-down"}>
-                    <Link className="link" to={{ pathname: '/duration' }}>Выбрать</Link>
+                    <Link className="link" to={{ pathname: '/duration/' + this.props.match.params.params + "&"+ this.state.choose.join('') }}>Выбрать</Link>
                 </div>
             </div>
          );

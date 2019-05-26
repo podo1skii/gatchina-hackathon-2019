@@ -138,7 +138,8 @@ class Card extends Component {
 
     render() { 
         console.log(this.props);
-        
+        console.log(window.times);
+        console.log(window.distance);
         return ( 
             <div>
                 <div style={{left: this.state.left + '%'}} onTouchEnd={(e)=>this.onTinderMoveEnd(e.changedTouches[0].clientX)} onTouchMove={(e)=>this.onTinderMove(e.targetTouches[0].clientX)} onClick={()=>{this.onChangeStatus()}} className={"tinder-card "+this.state.moveTinder}>
@@ -149,7 +150,7 @@ class Card extends Component {
                     <div className="line"></div>
                     <div className="scrolling">
                         {this.state.places.map((item)=>
-                            <div className="place-info">
+                            <div key={1} className="place-info">
                                 <img className={"typeof-place "+item.type} src={getTypeOfPlace(item.type)}></img>
                                 <div className="nameof-place">{item.name}</div>
                                 <div></div>
